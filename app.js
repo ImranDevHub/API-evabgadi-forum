@@ -24,9 +24,8 @@ app.use('/api/answers', auth, answerRoutes);
     const result = await connection.execute("SELECT 'test'");
     //  console.log(result); // Print the result of the test query
 
-    await app.listen(port);
+    await app.listen();
     console.log('Database connection established :(');
-    console.log(`Listening on ${port}: http://localhost:${port}`);
   } catch (err) {
     console.error(err.message);
   }
