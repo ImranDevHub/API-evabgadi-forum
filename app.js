@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000; // Use Render's port or fallback to 5000
 
 app.use(cors());
 app.use(express.json());
@@ -22,10 +22,12 @@ app.use('/api/answers', auth, answerRoutes);
 (async () => {
   try {
     const result = await connection.execute("SELECT 'test'");
-    //  console.log(result); // Print the result of the test query
+    console.log(result); // Uncomment this to see the result of the test query
 
-    app.listen();
-    console.log('Database connection established :(');
+    app.listen(port, () => {
+      console.log(`Server is running on port ${port}`);
+    });
+    console.log('Database connection established :)');
   } catch (err) {
     console.error(err.message);
   }
