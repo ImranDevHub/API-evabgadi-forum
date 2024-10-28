@@ -26,7 +26,6 @@ app.use('/api/answers', auth, answerRoutes);
 
     app.listen();
     console.log('Database connection established :(');
-    console.log(`Listening on ${port}: http://localhost:${port}`);
   } catch (err) {
     console.error(err.message);
   }
